@@ -9,7 +9,8 @@ import './Blog.css';
 class Blog extends Component {
     state={
         posts:[],
-        darkMode:false
+        darkMode:false,
+        selectedPostId:null
     }
     componentDidMount(){
         //get returns a promise
@@ -26,6 +27,9 @@ class Blog extends Component {
             console.log(response)
         })
     }
+    postSelectedHandler(id){
+        this.setState({selectedPostId:id})
+    }
     render () {
         const ThemeToggleHandler=()=>{
             this.setState((prevState)=>{
@@ -33,7 +37,12 @@ class Blog extends Component {
             })
         }
         const posts=this.state.posts.map((post)=>{
-            return <Post key={post.id}title={post.title} author={post.author} theme={this.state.darkMode} />
+            return <Post
+            clicked={()=>this.postSelectedHandler(post.id)}
+            key={post.id}
+            title={post.title} 
+            author={post.author} 
+            theme={this.state.darkMode} />
         })
         return (
             <div>
@@ -42,7 +51,9 @@ class Blog extends Component {
                 {posts}
                 </section>
                 <section>
-                    <FullPost theme={this.state.darkMode}/>
+                    <FullPost
+                    id={this.state.selectedPostId}
+                    theme={this.state.darkMode}/>
                 </section>
                 <section>
                     <NewPost theme={this.state.darkMode}/>

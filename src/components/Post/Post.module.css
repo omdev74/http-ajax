@@ -15,7 +15,7 @@
 
 .Post:hover,
 .Post:active {
-    background-color: #232324;
+    background-color:rgb(211, 207, 207);
 }
 
 .Author {
@@ -25,6 +25,10 @@
 .Dark{
     background-color: hsl(260, 18%, 10%);
     color: white;
+}
+.Dark:hover,
+.Dark:active {
+    background-color: #232324;
 }
 .Light{
     background-color: #ffffff;
