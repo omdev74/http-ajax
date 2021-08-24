@@ -15,10 +15,18 @@
 
 .Post:hover,
 .Post:active {
-    background-color: #C0DDF5;
+    background-color: #232324;
 }
 
 .Author {
     margin: 16px 0;
     color: #ccc;
+}
+.Dark{
+    background-color: hsl(260, 18%, 10%);
+    color: white;
+}
+.Light{
+    background-color: #ffffff;
+    color: black;
 }

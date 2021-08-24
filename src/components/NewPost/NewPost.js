@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './NewPost.css';
+import classes from'./NewPost.module.css';
 
 class NewPost extends Component {
     state = {
@@ -8,10 +8,12 @@ class NewPost extends Component {
         content: '',
         author: 'Max'
     }
-
+    
     render () {
+        let theme = null;
+        this.props.theme === true ? theme="Dark":theme="Light"
         return (
-            <div className="NewPost">
+            <div  className={[classes.NewPost,classes[theme]].join(" ")}>
                 <h1>Add a Post</h1>
                 <label>Title</label>
                 <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})} />
