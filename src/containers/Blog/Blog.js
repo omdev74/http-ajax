@@ -10,10 +10,13 @@ class Blog extends Component {
     state={
         posts:[],
         darkMode:false,
-        selectedPostId:null
+        selectedPostId:null,
+        error:false
     }
     componentDidMount(){
         //get returns a promise
+        //will through an error
+        // axios.get("https://jsonplaceholder.typicode.com/postssssss")
         axios.get("https://jsonplaceholder.typicode.com/posts")
         .then((response)=>{
             const posts = response.data.slice(0,4)
@@ -26,6 +29,10 @@ class Blog extends Component {
             this.setState({posts:updatedPosts})
             console.log(response)
         })
+        .catch((error)=>{
+            // console.log(error)
+            this.setState({error:true})
+        })
     }
     postSelectedHandler(id){
         this.setState({selectedPostId:id})
@@ -36,14 +43,19 @@ class Blog extends Component {
                 return{darkMode:!prevState.darkMode}
             })
         }
-        const posts=this.state.posts.map((post)=>{
-            return <Post
-            clicked={()=>this.postSelectedHandler(post.id)}
-            key={post.id}
-            title={post.title} 
-            author={post.author} 
-            theme={this.state.darkMode} />
-        })
+        //error Control
+        let posts = <p>Something went Wrong....</p>;
+        if(!this.state.error){
+            posts= this.state.posts.map((post)=>{
+                return <Post
+                clicked={()=>this.postSelectedHandler(post.id)}
+                key={post.id}
+                title={post.title} 
+                author={post.author} 
+                theme={this.state.darkMode} />
+            })
+            
+        }
         return (
             <div>
                 <Nav theme={this.state.darkMode} clickedToggle={ThemeToggleHandler}></Nav>
