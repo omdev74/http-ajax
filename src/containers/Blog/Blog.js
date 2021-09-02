@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { Route } from 'react-router-dom';
 // import axios from 'axios';
 import axios from '../../axios';
 
@@ -30,7 +31,11 @@ class Blog extends Component {
         return (
             <div>
                 <Nav theme={this.state.darkMode} clickedToggle={ThemeToggleHandler}></Nav>
-                <Posts theme={this.state.darkMode}></Posts>
+                {/* <Route path="/"  render={()=><h1>Home</h1>} /> */}
+                <Route path="/" exact render={()=><h1>Home</h1>} />
+                <Route path="/" exact render={()=><h1>Home 2</h1>} />
+
+                {/* <Posts theme={this.state.darkMode}></Posts> */}
             </div>
         );
     }

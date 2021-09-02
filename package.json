@@ -1,6 +1,6 @@
 {
   "name": "http-ajax",
-  "version": "0.11.6",
+  "version": "0.11.7",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
