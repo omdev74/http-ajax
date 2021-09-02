@@ -12,7 +12,7 @@ import './Blog.css';
 class Blog extends Component {
     state={
         posts:[],
-        darkMode:false,
+        darkMode:true,
         selectedPostId:null,
         error:false
     }
@@ -41,11 +41,15 @@ class Blog extends Component {
         this.setState({selectedPostId:id})
     }
     render () {
-        const ThemeToggleHandler=()=>{
+        
+        const ThemeToggleHandler=(event)=>{
+            console.log(event.target.checked)
+            // event.target.checked
             this.setState((prevState)=>{
                 return{darkMode:!prevState.darkMode}
             })
         }
+
         //error Control
         let posts = <p>Something went Wrong....</p>;
         if(!this.state.error){

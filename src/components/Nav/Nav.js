@@ -7,7 +7,11 @@ const nav=(props)=>{
     props.theme === true ? theme="Dark":theme="Light"
     return(
     <header className={[classes.Nav,classes[theme]].join(" ")}>
-    <ThemeToggle clicked={props.clickedToggle}></ThemeToggle>
+    <ul className={classes.NavigationItems}>
+        <li><ThemeToggle clicked={props.clickedToggle} theme={props.theme}></ThemeToggle></li>
+        <li><a href="/" >Home</a></li>
+        <li><a href="/new-post" >New Post</a></li>
+    </ul>
     </header>
     )
 }
