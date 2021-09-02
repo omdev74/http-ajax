@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import axios from '../../axios';
 
 import Post from '../../components/Post/Post';
-import FullPost from '../../components/FullPost/FullPost';
-import NewPost from '../../components/NewPost/NewPost';
+import FullPost from './FullPost/FullPost';
+import NewPost from './NewPost/NewPost';
 import Nav from "../../components/Nav/Nav"
 import './Blog.css';
 
@@ -77,6 +77,8 @@ class Blog extends Component {
                 <section>
                     <NewPost theme={this.state.darkMode}/>
                 </section>
+
+                
             </div>
         );
     }
