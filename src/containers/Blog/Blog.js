@@ -8,38 +8,14 @@ import FullPost from './FullPost/FullPost';
 import NewPost from './NewPost/NewPost';
 import Nav from "../../components/Nav/Nav"
 import './Blog.css';
+import Posts from './Posts/Posts';
 
 class Blog extends Component {
     state={
-        posts:[],
-        darkMode:true,
-        selectedPostId:null,
-        error:false
+    darkMode:true   
     }
-    componentDidMount(){
-        //get returns a promise
-        //will through an error
-        // axios.get("https://jsonplaceholder.typicode.com/postssssss")
-        axios.get("/posts")
-        .then((response)=>{
-            const posts = response.data.slice(0,4)
-            const updatedPosts = posts.map((post)=>{
-                return {
-                    ...post,
-                    author:"Om Dev"
-                }
-            })
-            this.setState({posts:updatedPosts})
-            // console.log(response)
-        })
-        .catch((error)=>{
-            // console.log(error)
-            this.setState({error:true})
-        })
-    }
-    postSelectedHandler(id){
-        this.setState({selectedPostId:id})
-    }
+    
+    
     render () {
         
         const ThemeToggleHandler=(event)=>{
@@ -50,35 +26,11 @@ class Blog extends Component {
             })
         }
 
-        //error Control
-        let posts = <p>Something went Wrong....</p>;
-        if(!this.state.error){
-            posts= this.state.posts.map((post)=>{
-                return <Post
-                clicked={()=>this.postSelectedHandler(post.id)}
-                key={post.id}
-                title={post.title} 
-                author={post.author} 
-                theme={this.state.darkMode} />
-            })
-            
-        }
+        
         return (
             <div>
                 <Nav theme={this.state.darkMode} clickedToggle={ThemeToggleHandler}></Nav>
-                <section className="Posts">
-                {posts}
-                </section>
-                <section>
-                    <FullPost
-                    id={this.state.selectedPostId}
-                    theme={this.state.darkMode}/>
-                </section>
-                <section>
-                    <NewPost theme={this.state.darkMode}/>
-                </section>
-
-                
+                <Posts theme={this.state.darkMode}></Posts>
             </div>
         );
     }
