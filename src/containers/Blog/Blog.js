@@ -31,9 +31,21 @@ class Blog extends Component {
         return (
             <div>
                 <Nav theme={this.state.darkMode} clickedToggle={ThemeToggleHandler}></Nav>
-                {/* <Route path="/"  render={()=><h1>Home</h1>} /> */}
-                <Route path="/" exact render={()=><h1>Home</h1>} />
-                <Route path="/" exact render={()=><h1>Home 2</h1>} />
+                {/* <Route path="/"  render={()=><h1>Home</h1>} />
+                
+                <Route path="/" exact render={()=><h1>Home</h1>} /> */}
+                {/* <Route path="/" exact component={Posts } />    */}
+                <Route 
+                path="/" 
+                exact 
+                component={(props)=><Posts {...props}theme={this.state.darkMode} />}
+                />
+
+                <Route 
+                path="/new-post" 
+                exact 
+                component={(props)=><NewPost {...props}theme={this.state.darkMode}/> } />   
+
 
                 {/* <Posts theme={this.state.darkMode}></Posts> */}
             </div>

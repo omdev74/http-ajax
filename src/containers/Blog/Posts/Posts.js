@@ -12,6 +12,7 @@ export default class Posts extends Component{
         //get returns a promise
         //will through an error
         // axios.get("https://jsonplaceholder.typicode.com/postssssss")
+        console.log(this.props)
         axios.get("/posts")
         .then((response)=>{
             const posts = response.data.slice(0,4)
