@@ -40,7 +40,10 @@ export default class Posts extends Component{
         let posts = <p>Something went Wrong....</p>;
         if(!this.state.error){
             posts= this.state.posts.map((post)=>{
-                return (<Link to={"/"+post.id} key={post.id}>
+                return (<Link 
+                    to={"/"+post.id} key={post.id}
+                    style={{textDecoration:"none"}}
+                >
                 <Post
                 clicked={()=>this.postSelectedHandler(post.id)}
                 
