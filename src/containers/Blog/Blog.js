@@ -44,7 +44,12 @@ class Blog extends Component {
                 <Route 
                 path="/new-post" 
                 exact 
-                component={(props)=><NewPost {...props}theme={this.state.darkMode}/> } />   
+                component={(props)=><NewPost {...props}theme={this.state.darkMode}/> } />
+               
+                <Route 
+                path="/:id" 
+                exact 
+                component={(props)=><FullPost {...props}theme={this.state.darkMode}/> } />      
 
 
                 {/* <Posts theme={this.state.darkMode}></Posts> */}

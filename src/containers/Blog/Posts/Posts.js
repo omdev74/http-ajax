@@ -3,6 +3,7 @@ import axios from '../../../axios';
 import "./Posts.css"
 
 import Post from "../../../components/Post/Post";
+import { Link } from "react-router-dom";
 export default class Posts extends Component{
     state={
         posts:[],
@@ -39,12 +40,14 @@ export default class Posts extends Component{
         let posts = <p>Something went Wrong....</p>;
         if(!this.state.error){
             posts= this.state.posts.map((post)=>{
-                return <Post
+                return (<Link to={"/"+post.id} key={post.id}>
+                <Post
                 clicked={()=>this.postSelectedHandler(post.id)}
-                key={post.id}
+                
                 title={post.title} 
                 author={post.author} 
                 theme={this.props.theme} />
+                </Link>)
             })
             
         }
