@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 import { Route,Switch } from 'react-router-dom';
 // import axios from 'axios';
-import axios from '../../axios';
 
-import Post from '../../components/Post/Post';
+
 import FullPost from './FullPost/FullPost';
 import NewPost from './NewPost/NewPost';
 import Nav from "../../components/Nav/Nav"
