@@ -21,11 +21,19 @@
     align-items: center;
     height: 100%;
 }
+
 .NavigationItems a{
-    text-decoration: none;
-    color: inherit;
+    text-decoration:none;
     margin: auto;
+    color: inherit;
 }
+
+.NavigationItems a:hover,
+.NavigationItems a:active{
+    color: blueviolet;
+}
+
+
 .NavigationItems li{
         margin:0;
         display: flex;
