@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Route } from 'react-router-dom';
+import { Route,Switch } from 'react-router-dom';
 // import axios from 'axios';
 import axios from '../../axios';
 
@@ -35,23 +35,24 @@ class Blog extends Component {
                 
                 <Route path="/" exact render={()=><h1>Home</h1>} /> */}
                 {/* <Route path="/" exact component={Posts } />    */}
-                <Route 
-                path="/" 
-                exact 
-                component={(props)=><Posts {...props}theme={this.state.darkMode} />}
-                />
+                <Switch>
+                    <Route 
+                    path="/" 
+                    exact 
+                    component={(props)=><Posts {...props}theme={this.state.darkMode} />}/>
 
-                <Route 
-                path="/new-post" 
-                exact 
-                component={(props)=><NewPost {...props}theme={this.state.darkMode}/> } />
-               
-                <Route 
-                path="/:id" 
-                exact 
-                component={(props)=><FullPost {...props}theme={this.state.darkMode}/> } />      
-
-
+                    <Route 
+                    path="/new-post" 
+                    exact 
+                    component={(props)=><NewPost {...props}theme={this.state.darkMode}/> } />
+                
+                    <Route 
+                    path="/:id" 
+                    exact 
+                    component={(props)=><FullPost {...props}theme={this.state.darkMode}/> } />      
+                </Switch>
+                
+  
                 {/* <Posts theme={this.state.darkMode}></Posts> */}
             </div>
         );
