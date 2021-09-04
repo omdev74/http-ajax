@@ -3,7 +3,7 @@ import axios from '../../../axios';
 import "./Posts.css"
 
 import Post from "../../../components/Post/Post";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 export default class Posts extends Component{
     state={
         posts:[],
@@ -31,26 +31,39 @@ export default class Posts extends Component{
             // this.setState({error:true})
         })
     }
+    // postSelectedHandler(id){
+    //     this.setState({selectedPostId:id})
+    //     console.log(this.state.selectedPostId)
+    // }
     postSelectedHandler(id){
-        this.setState({selectedPostId:id})
-        console.log(this.state.selectedPostId)
+        this.props.history.push({pathname:"/"+id})
+        // this.props.history.push("/"+id)
+        
     }
     render(){
         //error Control
         let posts = <p>Something went Wrong....</p>;
         if(!this.state.error){
             posts= this.state.posts.map((post)=>{
-                return (<Link 
-                    to={"/"+post.id} key={post.id}
-                    style={{textDecoration:"none"}}
-                >
-                <Post
-                clicked={()=>this.postSelectedHandler(post.id)}
-                
-                title={post.title} 
-                author={post.author} 
-                theme={this.props.theme} />
-                </Link>)
+                // return (
+                // <Link to={"/"+post.id} 
+                //     key={post.id}
+                //     style={{textDecoration:"none"}}>
+                //         <Post
+                //         clicked={()=>this.postSelectedHandler(post.id)}
+                        
+                //         title={post.title} 
+                //         author={post.author} 
+                //         theme={this.props.theme} />
+                // </Link>)
+                return (
+                            <Post
+                            clicked={()=>this.postSelectedHandler(post.id)}
+                            key={post.id}
+                            title={post.title} 
+                            author={post.author} 
+                            theme={this.props.theme} />
+                        )
             })
             
         }
