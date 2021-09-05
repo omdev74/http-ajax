@@ -14,10 +14,10 @@ const nav=(props)=>{
 
         {/* <li><a href="/" >Home</a></li> */}
         <li><NavLink 
-        to="/" 
+        to="/posts/" 
         exact
         activeClassName="active"
-        activeStyle={{color:"red"}}>Home</NavLink></li>
+        activeStyle={{color:"red"}}>Posts</NavLink></li>
         <li><NavLink 
         exact 
         to={{

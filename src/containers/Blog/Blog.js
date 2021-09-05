@@ -4,7 +4,7 @@ import { Route,Switch } from 'react-router-dom';
 // import axios from 'axios';
 
 
-import FullPost from './FullPost/FullPost';
+// import FullPost from './FullPost/FullPost';
 import NewPost from './NewPost/NewPost';
 import Nav from "../../components/Nav/Nav"
 import './Blog.css';
@@ -35,20 +35,18 @@ class Blog extends Component {
                 <Route path="/" exact render={()=><h1>Home</h1>} /> */}
                 {/* <Route path="/" exact component={Posts } />    */}
                 <Switch>
-                    <Route 
-                    path="/" 
-                    exact 
-                    component={(props)=><Posts {...props}theme={this.state.darkMode} />}/>
-
+                    
                     <Route 
                     path="/new-post" 
                     exact 
                     component={(props)=><NewPost {...props}theme={this.state.darkMode}/> } />
-                
+
                     <Route 
-                    path="/:id" 
-                    exact 
-                    component={(props)=><FullPost {...props}theme={this.state.darkMode}/> } />      
+                    path="/posts" 
+                    // exact 
+                    component={(props)=><Posts {...props}theme={this.state.darkMode} />}/>
+                
+                       
                 </Switch>
                 
   
