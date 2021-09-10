@@ -24,7 +24,9 @@ class NewPost extends Component {
         axios.post("/posts",data)
         .then((response)=>{
             console.log(response);
-            this.setState({submitted:true})
+            this.history.push('/posts/');
+            // this.history.replace('/posts/');
+            // this.setState({submitted:true})
             
         })
     }
