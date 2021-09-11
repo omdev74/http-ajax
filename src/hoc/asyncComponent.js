@@ -1,4 +1,4 @@
-import {react,Component} from "react";
+import {Component} from "react";
 const asyncComponent = (importComponent)=>{
     return class extends Component {
         state={
