@@ -5,14 +5,21 @@ import { Route,Switch,Redirect } from 'react-router-dom';
 
 
 // import FullPost from './FullPost/FullPost';
-import NewPost from './NewPost/NewPost';
+
 import Nav from "../../components/Nav/Nav"
 import './Blog.css';
 import Posts from './Posts/Posts';
+// import NewPost from './NewPost/NewPost';
+
+import asyncComponent from '../../hoc/asyncComponent';
+const AsyncNewPost = asyncComponent(()=>{
+    return import('./NewPost/NewPost');
+})
 
 class Blog extends Component {
     state={
-    darkMode:true   
+    darkMode:true,
+    auth:true  
     }
     
     
@@ -35,22 +42,22 @@ class Blog extends Component {
                 <Route path="/" exact render={()=><h1>Home</h1>} /> */}
                 {/* <Route path="/" exact component={Posts } />    */}
                 <Switch>
-                    
-                    <Route 
+                    {this.state.auth ? <Route 
                     path="/new-post" 
                     exact 
-                    component={(props)=><NewPost {...props}theme={this.state.darkMode}/> } />
+                    component={(props)=><AsyncNewPost {...props}theme={this.state.darkMode}/> } />:null}
+                    
 
                     <Route 
                     path="/posts" 
                     // exact 
                     component={(props)=><Posts {...props}theme={this.state.darkMode} />}/>
                     
-                    <Redirect from="/" to="/posts"/>
-                    {/* <Route path="/posts" component={(props)=><Posts />} /> */}
+                    <Route render={()=><h1>Not Found</h1>} />
+                    {/* or
+                    <Redirect from="/" to="/posts"/> */}
+                    
 
-                
-                       
                 </Switch>
                 
   
